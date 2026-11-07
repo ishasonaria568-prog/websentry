@@ -108,7 +108,7 @@ def cmd_update(signatures_path: Optional[str] = None) -> int:
     print(f"  {sym_plus()} Signature engine:       {bold(green('Active'))}")
     print(f"  {sym_plus()} Installed signatures:   {bold(yellow(str(count)))} rules")
     print(f"  {sym_plus()} Status:                 {green('All signatures are up to date.')}")
-    print(f"  {sym_plus()} Local database path:    {gray(scanner.signatures_path or 'websentry/signatures/default_signatures.json')}\n")
+    print(f"  {sym_plus()} Local database path:    {gray(scanner.loaded_path or scanner.signatures_path or 'websentry/signatures/default_signatures.json')}\n")
     return 0
 
 def cmd_scan(args: argparse.Namespace) -> int:

@@ -23,19 +23,29 @@ class NiktoSignatureScanner(BaseScanner):
     def __init__(self, signatures_path: Optional[str] = None):
         self.signatures_path = signatures_path
         self._signatures: List[Dict[str, Any]] = []
+        self.loaded_path: Optional[str] = None
         self._load_signatures()
 
     def _load_signatures(self) -> None:
-        """Loads signature database from disk."""
+        """Loads signature database from disk or package data."""
         path_to_load = None
         if self.signatures_path and os.path.exists(self.signatures_path):
             path_to_load = self.signatures_path
         else:
-            default_path = Path(__file__).parent.parent / "signatures" / "default_signatures.json"
-            if default_path.exists():
-                path_to_load = str(default_path)
+            try:
+                from websentry.signatures import DEFAULT_SIGNATURES_FILE
+                if DEFAULT_SIGNATURES_FILE.exists():
+                    path_to_load = str(DEFAULT_SIGNATURES_FILE)
+            except Exception:
+                pass
+
+            if not path_to_load:
+                default_path = Path(__file__).parent.parent / "signatures" / "default_signatures.json"
+                if default_path.exists():
+                    path_to_load = str(default_path)
 
         if path_to_load:
+            self.loaded_path = path_to_load
             try:
                 with open(path_to_load, "r", encoding="utf-8") as f:
                     self._signatures = json.load(f)

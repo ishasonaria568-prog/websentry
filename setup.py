@@ -9,7 +9,11 @@ from setuptools import setup, find_packages
 from pathlib import Path
 
 this_directory = Path(__file__).parent
-long_description = (this_directory / "README.md").read_text(encoding="utf-8") if (this_directory / "README.md").exists() else "WebSentry - Web Server Security Assessment Tool"
+long_description = (
+    (this_directory / "README.md").read_text(encoding="utf-8")
+    if (this_directory / "README.md").exists()
+    else "WebSentry - Web Server Security Assessment Tool"
+)
 
 setup(
     name="websentry",
@@ -24,6 +28,7 @@ setup(
     include_package_data=True,
     package_data={
         "websentry": ["signatures/*.json"],
+        "websentry.signatures": ["*.json"],
     },
     python_requires=">=3.8",
     install_requires=[

@@ -1,0 +1,2 @@
+[console_scripts]
+websentry = websentry.cli:main

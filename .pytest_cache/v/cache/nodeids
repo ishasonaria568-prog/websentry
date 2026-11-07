@@ -1,0 +1,17 @@
+[
+  "tests/test_finding.py::TestFinding::test_cli_format",
+  "tests/test_finding.py::TestFinding::test_finding_to_dict",
+  "tests/test_finding.py::TestFinding::test_severity_ordering",
+  "tests/test_finding.py::TestFinding::test_severity_parsing",
+  "tests/test_local_server.py::TestEndToEndLocalServer::test_full_scan_against_local_test_server",
+  "tests/test_reports.py::TestReports::test_html_report",
+  "tests/test_reports.py::TestReports::test_json_report",
+  "tests/test_reports.py::TestReports::test_txt_report",
+  "tests/test_safety.py::TestSafetyGuardrails::test_invalid_scheme",
+  "tests/test_safety.py::TestSafetyGuardrails::test_localhost_scan_allowed_without_flag",
+  "tests/test_safety.py::TestSafetyGuardrails::test_private_ips",
+  "tests/test_safety.py::TestSafetyGuardrails::test_public_ips",
+  "tests/test_safety.py::TestSafetyGuardrails::test_public_target_explicitly_allowed",
+  "tests/test_safety.py::TestSafetyGuardrails::test_public_target_refusal",
+  "tests/test_safety.py::TestSafetyGuardrails::test_url_normalization"
+]
