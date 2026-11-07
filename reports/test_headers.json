@@ -1,0 +1,126 @@
+{
+  "scan_meta": {
+    "tool": "WebSentry",
+    "version": "1.2.0",
+    "author": "Isha Sonaria",
+    "github": "https://github.com/ishasonaria568-prog",
+    "target_url": "https://example.com",
+    "timestamp": "2026-11-07 06:32:33 UTC",
+    "duration_seconds": 0.09,
+    "total_requests": 1,
+    "total_findings": 8,
+    "summary": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 2,
+      "LOW": 2,
+      "INFORMATIONAL": 4
+    }
+  },
+  "findings": [
+    {
+      "title": "Missing Content-Security-Policy (CSP) Header",
+      "severity": "MEDIUM",
+      "url": "https://example.com",
+      "description": "The Content-Security-Policy response header restricts the sources of scripts, images, and other assets, mitigating Cross-Site Scripting (XSS) and data injection attacks.",
+      "remediation": "Define and deploy a restrictive Content-Security-Policy header (e.g., default-src 'self').",
+      "category": "HTTP Headers",
+      "id": "WS-HDR-MISSING-CONTENT_SECURITY_POLICY",
+      "status_code": 200,
+      "evidence": "Header 'Content-Security-Policy' was not returned in HTTP 200 response.",
+      "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP",
+      "timestamp": "2026-11-07T06:32:33.397937Z"
+    },
+    {
+      "title": "Missing HTTP Strict-Transport-Security (HSTS) Header",
+      "severity": "MEDIUM",
+      "url": "https://example.com",
+      "description": "HSTS instructs modern browsers to only connect to the domain using HTTPS, preventing SSL-stripping attacks and man-in-the-middle downgrade attempts.",
+      "remediation": "Add 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' to all HTTPS responses.",
+      "category": "HTTP Headers",
+      "id": "WS-HDR-MISSING-STRICT_TRANSPORT_SECURITY",
+      "status_code": 200,
+      "evidence": "Header 'Strict-Transport-Security' was not returned in HTTP 200 response.",
+      "reference": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html",
+      "timestamp": "2026-11-07T06:32:33.397953Z"
+    },
+    {
+      "title": "Missing X-Frame-Options Header (Clickjacking)",
+      "severity": "LOW",
+      "url": "https://example.com",
+      "description": "Without X-Frame-Options or CSP frame-ancestors, the application may be embedded in an attacker's iframe, exposing users to clickjacking.",
+      "remediation": "Send 'X-Frame-Options: DENY' or 'X-Frame-Options: SAMEORIGIN', or use CSP 'frame-ancestors' directive.",
+      "category": "HTTP Headers",
+      "id": "WS-HDR-MISSING-X_FRAME_OPTIONS",
+      "status_code": 200,
+      "evidence": "Header 'X-Frame-Options' was not returned in HTTP 200 response.",
+      "reference": "https://owasp.org/www-community/attacks/Clickjacking",
+      "timestamp": "2026-11-07T06:32:33.397959Z"
+    },
+    {
+      "title": "Missing X-Content-Type-Options Header",
+      "severity": "LOW",
+      "url": "https://example.com",
+      "description": "Without 'X-Content-Type-Options: nosniff', browsers may attempt to MIME-sniff the response content, potentially executing untrusted uploads as HTML/JavaScript.",
+      "remediation": "Set 'X-Content-Type-Options: nosniff' across all HTTP responses.",
+      "category": "HTTP Headers",
+      "id": "WS-HDR-MISSING-X_CONTENT_TYPE_OPTIONS",
+      "status_code": 200,
+      "evidence": "Header 'X-Content-Type-Options' was not returned in HTTP 200 response.",
+      "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options",
+      "timestamp": "2026-11-07T06:32:33.397964Z"
+    },
+    {
+      "title": "Missing Referrer-Policy Header",
+      "severity": "INFORMATIONAL",
+      "url": "https://example.com",
+      "description": "A missing Referrer-Policy may cause browsers to leak sensitive path or query parameters in the Referer header when navigating to external origins.",
+      "remediation": "Set 'Referrer-Policy: strict-origin-when-cross-origin' or 'no-referrer'.",
+      "category": "HTTP Headers",
+      "id": "WS-HDR-MISSING-REFERRER_POLICY",
+      "status_code": 200,
+      "evidence": "Header 'Referrer-Policy' was not returned in HTTP 200 response.",
+      "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
+      "timestamp": "2026-11-07T06:32:33.397969Z"
+    },
+    {
+      "title": "Missing Permissions-Policy Header",
+      "severity": "INFORMATIONAL",
+      "url": "https://example.com",
+      "description": "Permissions-Policy allows site administrators to disable or restrict browser features such as geolocation, camera, microphone, and payment APIs.",
+      "remediation": "Implement a Permissions-Policy header restricting unused browser hardware and APIs.",
+      "category": "HTTP Headers",
+      "id": "WS-HDR-MISSING-PERMISSIONS_POLICY",
+      "status_code": 200,
+      "evidence": "Header 'Permissions-Policy' was not returned in HTTP 200 response.",
+      "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy",
+      "timestamp": "2026-11-07T06:32:33.397976Z"
+    },
+    {
+      "title": "Missing Cross-Origin-Opener-Policy (COOP)",
+      "severity": "INFORMATIONAL",
+      "url": "https://example.com",
+      "description": "COOP ensures top-level documents do not share a browsing context group with cross-origin documents, protecting against Spectre-style side-channel attacks.",
+      "remediation": "Set 'Cross-Origin-Opener-Policy: same-origin'.",
+      "category": "HTTP Headers",
+      "id": "WS-HDR-MISSING-CROSS_ORIGIN_OPENER_POLICY",
+      "status_code": 200,
+      "evidence": "Header 'Cross-Origin-Opener-Policy' was not returned in HTTP 200 response.",
+      "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy",
+      "timestamp": "2026-11-07T06:32:33.397982Z"
+    },
+    {
+      "title": "Web Server Version Disclosure",
+      "severity": "INFORMATIONAL",
+      "url": "https://example.com",
+      "description": "The Server header discloses the underlying web server software and potentially version or OS details. Disclosed value: 'cloudflare'.",
+      "remediation": "Disable or sanitize the 'Server' header in server/framework configuration to prevent fingerprinting.",
+      "category": "Information Disclosure",
+      "id": "WS-HDR-DISCLOSE-SERVER",
+      "status_code": 200,
+      "evidence": "Server: cloudflare",
+      "reference": "https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/02-Fingerprint_Web_Server",
+      "timestamp": "2026-11-07T06:32:33.398022Z"
+    }
+  ]
+}

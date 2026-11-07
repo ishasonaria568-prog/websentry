@@ -1,0 +1,35 @@
+{
+  "scan_meta": {
+    "tool": "WebSentry",
+    "version": "1.2.0",
+    "author": "Isha Sonaria",
+    "github": "https://github.com/ishasonaria568-prog",
+    "target_url": "https://example.com",
+    "timestamp": "2026-11-07 06:32:37 UTC",
+    "duration_seconds": 0.09,
+    "total_requests": 0,
+    "total_findings": 1,
+    "summary": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "INFORMATIONAL": 1
+    }
+  },
+  "findings": [
+    {
+      "title": "SSL/TLS Certificate Valid (48 Days Remaining)",
+      "severity": "INFORMATIONAL",
+      "url": "https://example.com:443",
+      "description": "Certificate is actively trusted and within valid lifetime.",
+      "remediation": "Maintain certificate lifecycle automation.",
+      "category": "SSL/TLS Security",
+      "id": "WS-SSL-CERT-VALID",
+      "status_code": null,
+      "evidence": "Expires: Dec 25 22:56:35 2026 GMT (Subject: {'commonName': 'example.com'})",
+      "reference": null,
+      "timestamp": "2026-11-07T06:32:37.056253Z"
+    }
+  ]
+}

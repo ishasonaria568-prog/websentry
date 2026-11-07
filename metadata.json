@@ -1,0 +1,6 @@
+{
+  "name": "WebSentry - Web Server Security Assessment Tool",
+  "description": "CLI-based web server security scanner inspired by Nikto, built by Isha Sonaria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
